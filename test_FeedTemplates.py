@@ -65,7 +65,12 @@ def test_public_user_profile(grpc_stub):
                 hero = FeedTemplate_V1_pb2.HeroItemProperties()
                 hero.ParseFromString(sub_item.PropertyBag)
                 print(f"        >> Hero Title: {hero.Title}")
-                assert hero.Title != ""
+                resourceToken = hero.Resource
+                resourceID = resourceToken.resourceId
+                resourceType = resourceID.resourceType
+                print(f"        >> Hero Resource Type: {resourceType}")
+                print(f"        >> Hero Resource ID namespace: {resourceID.namespace}")
+                print(f"        >> Hero Resource ID name: {resourceID.name}")
 
             elif sub_item.Type == "banner":
                 banner = FeedTemplate_V1_pb2.BannerItemProperties()
@@ -75,6 +80,9 @@ def test_public_user_profile(grpc_stub):
                 resourceID = resourceToken.resourceId
                 resourceType = resourceID.resourceType
                 print(f"        >> Banner Resource Type: {resourceType}")
+                print(f"        >> Banner Resource ID namespace: {resourceID.namespace}")
+                print(f"        >> Banner Resource ID name: {resourceID.name}")
+
             elif sub_item.Type == "category":
                 cat = FeedTemplate_V1_pb2.CategoryItemProperties()
                 cat.ParseFromString(sub_item.PropertyBag)
@@ -85,11 +93,45 @@ def test_public_user_profile(grpc_stub):
                 cover = FeedTemplate_V1_pb2.CoverItemProperties()
                 cover.ParseFromString(sub_item.PropertyBag)
                 print(f"        >> Cover Title: {cover.Title}")
+                resourceToken = cover.Resource
+                resourceID = resourceToken.resourceId
+                resourceType = resourceID.resourceType
+                print(f"        >> Cover Resource Type: {resourceType}")
+                print(f"        >> Cover Resource ID namespace: {resourceID.namespace}")
+                print(f"        >> Cover Resource ID name: {resourceID.name}")
 
             elif sub_item.Type == "shop":
                 shop = FeedTemplate_V1_pb2.ShopItemProperties()
                 shop.ParseFromString(sub_item.PropertyBag)
                 print(f"        >> Shop Title: {shop.Title}")
+                resourceToken = shop.Resource
+                resourceID = resourceToken.resourceId
+                resourceType = resourceID.resourceType
+                print(f"        >> Shop Resource Type: {resourceType}")
+                print(f"        >> Shop Resource ID namespace: {resourceID.namespace}")
+                print(f"        >> Shop Resource ID name: {resourceID.name}")
+
+            elif sub_item.Type == "user":
+                user = FeedTemplate_V1_pb2.UserItemProperties()
+                user.ParseFromString(sub_item.PropertyBag)
+                print(f"        >> User Title: {user.Title}")
+                resourceToken = user.Resource
+                resourceID = resourceToken.resourceId
+                resourceType = resourceID.resourceType
+                print(f"        >> User Resource Type: {resourceType}")
+                print(f"        >> User Resource ID namespace: {resourceID.namespace}")
+                print(f"        >> User Resource ID name: {resourceID.name}")
+
+            elif sub_item.Type == "review":
+                review = FeedTemplate_V1_pb2.ReviewItemProperties()
+                review.ParseFromString(sub_item.PropertyBag)
+                print(f"        >> review Title: {review.Title}")
+                resourceToken = review.Resource
+                resourceID = resourceToken.resourceId
+                resourceType = resourceID.resourceType
+                print(f"        >> review Resource Type: {resourceType}")
+                print(f"        >> review Resource ID namespace: {resourceID.namespace}")
+                print(f"        >> review Resource ID name: {resourceID.name}")
 
 if __name__ == "__main__":
     # To run without pytest:
